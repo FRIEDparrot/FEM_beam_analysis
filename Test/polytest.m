@@ -2,7 +2,7 @@ function out = model
 %
 % polytest.m
 %
-% Model exported on Mar 3 2023, 02:07 by COMSOL 6.0.0.318.
+% Model exported on Mar 3 2023, 11:08 by COMSOL 6.0.0.318.
 
 import com.comsol.model.*
 import com.comsol.model.util.*
@@ -170,5 +170,36 @@ model.component('comp1').geom('geom1').feature('wp1').geom.feature('pol2').setIn
 model.component('comp1').geom('geom1').feature('wp1').geom.run('pol2');
 model.component('comp1').geom('geom1').feature('wp1').geom.feature('pol2').setIndex('table', -2, 1, 0);
 model.component('comp1').geom('geom1').feature('wp1').geom.run('pol2');
+
+model.label('Untitled.mph');
+
+model.component('comp1').geom('geom1').run('wp1');
+model.component('comp1').geom('geom1').feature.create('ext1', 'Extrude');
+model.component('comp1').geom('geom1').feature('ext1').set('workplane', 'wp1');
+model.component('comp1').geom('geom1').feature('ext1').selection('input').set({'wp1'});
+model.component('comp1').geom('geom1').run('ext1');
+model.component('comp1').geom('geom1').run;
+
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh.remove('mesh1');
+
+model.component('comp1').geom('geom1').run('fin');
+
+model.component('comp1').mesh.create('mesh1');
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh('mesh1').autoMeshSize(7);
+model.component('comp1').mesh('mesh1').autoMeshSize(6);
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh('mesh1').autoMeshSize(7);
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh('mesh1').autoMeshSize(2);
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh('mesh1').autoMeshSize(1);
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh('mesh1').autoMeshSize(3);
+model.component('comp1').mesh('mesh1').run;
+model.component('comp1').mesh('mesh1').autoMeshSize(4);
+model.component('comp1').mesh('mesh1').run;
 
 out = model;
